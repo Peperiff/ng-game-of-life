@@ -39,6 +39,11 @@ export class Grid {
     return this._height;
   }
 
+  /**
+   * Make the next generation
+   */
+  public next(): void { }
+
   public toString(): string {
     let result = '';
     for (let i = 0; i < this._height; i++) {
