@@ -11,4 +11,12 @@ export class Cell {
   get isAlive(): boolean {
     return this._isAlive;
   }
+
+  set isAlive(isAlive: boolean) {
+    this._isAlive = isAlive;
+  }
+
+  public toString(): string {
+    return this.isAlive ? '*' : '.';
+  }
 }

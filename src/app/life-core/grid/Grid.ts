@@ -15,7 +15,7 @@ export class Grid {
    * @param width width of the grid
    * @param height height of the grid
    */
-  constructor(width: number, height: number) {
+  constructor(width?: number, height?: number) {
     this._width = (width !== null && width !== undefined && width > 0) ? width : 8;
     this._height = (height !== null && height !== undefined && height > 0) ? height : 4;
     this._grid = [];
@@ -40,7 +40,16 @@ export class Grid {
   }
 
   public toString(): string {
-    const result = '';
+    let result = '';
+    for (let i = 0; i < this._height; i++) {
+      for (let j = 0; j < this._width; j++) {
+        result += this._grid[i][j].toString();
+      }
+      // add break line if not the last line
+      if (i < this._height - 1) {
+        result += '\n';
+      }
+    }
     return result;
   }
 }
