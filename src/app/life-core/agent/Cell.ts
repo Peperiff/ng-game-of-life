@@ -1,3 +1,14 @@
+/**
+ * A simple Cell object of Conway's Game of Life.
+ */
 export class Cell {
-  constructor() { }
+  private _isAlive: boolean;
+  constructor() {
+    // initialize with a random boolean
+    this._isAlive = Math.random() >= 0.5;
+  }
+
+  get isAlive(): boolean {
+    return this._isAlive;
+  }
 }

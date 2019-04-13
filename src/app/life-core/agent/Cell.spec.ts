@@ -6,7 +6,12 @@ describe('Cell', () => {
   });
 
   it('should create Cell', () => {
-    const grid: Cell = new Cell();
-    expect(grid).toBeTruthy();
+    const cell: Cell = new Cell();
+    expect(cell).toBeTruthy();
+  });
+
+  it('should create Cell that is either alive or dead', () => {
+    const cell: Cell = new Cell();
+    expect(cell.isAlive).toBeDefined();
   });
 });
