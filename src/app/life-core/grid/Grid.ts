@@ -44,6 +44,35 @@ export class Grid {
    */
   public next(): void { }
 
+  /**
+   * Return the number of living Cell around a Cell at a given position.
+   * @param row row
+   * @param column column
+   */
+  public countLivingNeighboursAt(row, column): number {
+    let result = 0;
+    result = this.cellExistAndAlive(this.pickUpCellAt(row, column + 1)) ? result + 1 : result;
+    result = this.cellExistAndAlive(this.pickUpCellAt(row + 1, column + 1)) ? result + 1 : result;
+    result = this.cellExistAndAlive(this.pickUpCellAt(row + 1, column)) ? result + 1 : result;
+    result = this.cellExistAndAlive(this.pickUpCellAt(row + 1, column - 1)) ? result + 1 : result;
+    result = this.cellExistAndAlive(this.pickUpCellAt(row, column - 1)) ? result + 1 : result;
+    result = this.cellExistAndAlive(this.pickUpCellAt(row - 1, column - 1)) ? result + 1 : result;
+    result = this.cellExistAndAlive(this.pickUpCellAt(row - 1, column)) ? result + 1 : result;
+    result = this.cellExistAndAlive(this.pickUpCellAt(row - 1, column + 1)) ? result + 1 : result;
+    return result;
+  }
+
+  private pickUpCellAt(row, column): Cell|undefined {
+    if (row >= this.width || row < 0 || column >= this.height || column < 0) {
+      return undefined;
+    }
+    return this._grid[row][column];
+  }
+
+  private cellExistAndAlive(cell: Cell): boolean {
+    return cell && cell.isAlive;
+  }
+
   public toString(): string {
     let result = '';
     for (let i = 0; i < this._height; i++) {
