@@ -1,8 +1,25 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<h1>
-  {{ title }}
-</h1>
-<app-grid [grid]="grid.grid"></app-grid>
-<button (click)="play()">Play</button>
-<button (click)="stop()">Stop</button>
+<input type="checkbox" class="check" id="check" />
+<main>
+  <header class="item header">
+    <h2>{{ title }}</h2>
+  </header>
+  <div class="item stats">
+    <h2>Settings</h2>
+    <div>
+      <mat-slide-toggle disabled="true" checked="true">Infinite</mat-slide-toggle>
+    </div>
+    <div>
+      <mat-slider disabled="true" min="1" max="5" step="0.5" value="1.5"></mat-slider> Speed
+    </div>
+    <button mat-stroked-button color="primary" (click)="play()">Play</button>
+    <button mat-stroked-button color="warn" (click)="stop()">Stop</button>
+  </div>
+  <div class="item main">
+    <app-grid [grid]="grid.grid"></app-grid>
+  </div>
+  <div class="item score">
+    <h2><span></span></h2>
+  </div>
+  <label class="btn-open" for="check">STATS</label>
+</main>
 <router-outlet></router-outlet>

@@ -1,3 +1,106 @@
 h1 {
-    background: #ff6060;
+  background: #ff6060;
+}
+
+main {
+  display: grid;
+  height: 100vh;
+  max-width: 90vw;
+  margin: 0 auto;
+  grid-template-columns: 300px 1fr;
+  grid-template-areas: "header header" "stats main" "score main";
+  grid-template-rows: 50px minmax(300px, 1fr) 1fr;
+}
+
+h2 {
+  font-size: 1.7em;
+}
+
+h2 span {
+  font-size: 1.5em;
+  display: block;
+}
+
+.item {
+  padding: 5px 10px;
+  background: #333;
+}
+
+.header {
+  grid-area: header;
+  background: #ff6060;
+  padding: 0 20px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.stats {
+  grid-area: stats;
+  background: white;
+}
+
+.main {
+  background: #299;
+  grid-area: main;
+}
+
+.score, .header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+}
+
+.check {
+  position: absolute;
+  opacity: 0;
+}
+
+.btn-open {
+  display: none;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    font-size: 13px;
+  }
+  main {
+    grid-template-columns: 1fr 1fr;
+  }
+  h2 span {
+    display: inline;
+  }
+  .main, .stats {
+    grid-column: 1/span 2;
+    grid-row: 2/span 3;
+  }
+  .score {
+    grid-column: 2/span 1;
+    grid-row: 1;
+    padding: 0 20px;
+    font-size: 0.5em;
+  }
+  .btn-open {
+    display: block;
+    padding: 5px 20px;
+    background: rgba(113, 113, 113, 0.47);
+    grid-row: 3;
+    grid-column: 1;
+    height: 50px;
+    line-height: 50px;
+    color: white;
+    align-self: end;
+    z-index: 6;
+  }
+  .stats {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .check:checked~main>.stats {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
