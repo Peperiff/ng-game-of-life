@@ -1,6 +1,6 @@
 import { Grid } from '../grid/Grid';
 
-const DEFAULT_GAME_ITERATIONS = 10;
+const DEFAULT_GAME_ITERATIONS = 100;
 
 /**
  * Represent a game, singleton.
