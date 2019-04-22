@@ -38,7 +38,7 @@ export class Game {
           this.stop();
         }
         remainingIterations = remainingIterations - 1;
-        console.log(this._grid.toString());
+        console.log('Game\n' + this._grid.toString());
         this._grid.next();
       }
     }
