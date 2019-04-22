@@ -34,7 +34,7 @@ describe('Grid', () => {
     expect(grid.toString()).not.toBeNull();
   });
 
-  describe('Counting neighbours on 5x5 grid', () => {
+  describe('Counting neighbours on a 5x5 grid', () => {
     const grid: Grid = new Grid(5, 5);
     /**
      * |*.*..|
@@ -120,6 +120,67 @@ describe('Grid', () => {
 
     it('should count living neighbours of a Cell at (4, 4)', () => {
       expect(grid.countLivingNeighboursAt(4, 4)).toEqual(1);
+    });
+  });
+
+  describe('Making next generation on a 3x7 grid', () => {
+    const grid: Grid = new Grid(7, 3);
+    /**
+     * |*.*....|
+     * |..***.*|
+     * |*..***.|
+     */
+
+    // 1st row
+    grid.grid[0][0].isAlive = true;
+    grid.grid[0][1].isAlive = false;
+    grid.grid[0][2].isAlive = true;
+    grid.grid[0][3].isAlive = false;
+    grid.grid[0][4].isAlive = false;
+    grid.grid[0][5].isAlive = false;
+    grid.grid[0][6].isAlive = false;
+    // 2nd row
+    grid.grid[1][0].isAlive = false;
+    grid.grid[1][1].isAlive = false;
+    grid.grid[1][2].isAlive = true;
+    grid.grid[1][3].isAlive = true;
+    grid.grid[1][4].isAlive = true;
+    grid.grid[1][5].isAlive = false;
+    grid.grid[1][6].isAlive = true;
+    // 3rd row
+    grid.grid[2][0].isAlive = true;
+    grid.grid[2][1].isAlive = false;
+    grid.grid[2][2].isAlive = false;
+    grid.grid[2][3].isAlive = true;
+    grid.grid[2][4].isAlive = true;
+    grid.grid[2][5].isAlive = true;
+    grid.grid[2][6].isAlive = false;
+    console.log('>>> debug grid\n' + grid.toString());
+    const nextGeneration = grid.getNextGeneration(grid.grid);
+
+    it('should #1 live cell with fewer than two live neighbours dies, as if caused by underpopulation', () => {
+      expect(nextGeneration[0][0].isAlive).toBeFalsy();
+    });
+
+    it('should #2 a live cell with more than three live neighbours dies, as if by overcrowding', () => {
+      expect(nextGeneration[1][3].isAlive).toBeFalsy();
+      expect(nextGeneration[2][4].isAlive).toBeFalsy();
+    });
+
+    it('should #3 a live cell with two or three live neighbours lives on the next generation', () => {
+      expect(nextGeneration[0][2].isAlive).toBeTruthy();
+      expect(nextGeneration[1][2].isAlive).toBeTruthy();
+    });
+
+    it('should #4 dead cell with exactly three live neighbours becomes a live cell', () => {
+      expect(nextGeneration[0][1].isAlive).toBeTruthy();
+    });
+
+    it('should a dead cell stay dead', () => {
+      expect(nextGeneration[0][3].isAlive).toBeFalsy();
+      expect(nextGeneration[0][4].isAlive).toBeFalsy();
+      expect(nextGeneration[0][5].isAlive).toBeFalsy();
+      expect(nextGeneration[0][6].isAlive).toBeFalsy();
     });
   });
 });
