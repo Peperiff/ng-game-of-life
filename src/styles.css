@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 body {
   background-color: #F5F5F5;
   color: #555;
@@ -11,4 +12,8 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+h2 {
+  font-size: 1.7em;
 }
