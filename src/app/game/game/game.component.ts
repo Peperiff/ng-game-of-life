@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Game } from 'src/app/life-core/game/Game';
-import { Grid } from 'src/app/life-core/grid/Grid';
+import { Game, Grid } from 'src/app/life-core';
 
 @Component({
   selector: 'app-game',

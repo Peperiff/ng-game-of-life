@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Cell } from 'src/app/life-core/agent/Cell';
+import { Cell } from 'src/app/life-core';
 
 @Component({
   selector: 'app-grid',
