@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
@@ -16,6 +17,7 @@ import { GridComponent } from './game/grid/grid.component';
     MatSliderModule,
     MatButtonModule,
     MatSlideToggleModule,
+    FormsModule,
   ],
   exports: [
     GameComponent
