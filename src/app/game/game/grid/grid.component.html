@@ -1,0 +1,7 @@
+<div style="overflow-x:auto;">
+  <table>
+    <tr *ngFor="let row of grid">
+      <td *ngFor="let item of row" [ngClass]="{'alive': item.isAlive}"></td>
+    </tr>
+  </table>
+</div>
