@@ -1,4 +1,5 @@
 import { Game } from './Game';
+import { fakeAsync, flushMicrotasks } from '@angular/core/testing';
 
 describe('Game', () => {
   let game: Game;
@@ -28,6 +29,13 @@ describe('Game', () => {
     expect(game.stop());
     expect(game.isRunning).toBeFalsy();
   });
+
+  it('should stop the Game even if and interval is set between each generation', fakeAsync(() => {
+    spyOn(game.grid, 'next').and.callThrough();
+    game.play(100, 100);
+    expect(game.stop());
+    expect(game.isRunning).toBeFalsy();
+  }));
 
   afterEach(() => {
     expect(game.stop());
