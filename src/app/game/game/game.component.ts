@@ -28,6 +28,12 @@ export class GameComponent {
     this.speedDisabled = false;
   }
 
+  reset() {
+    this.speedDisabled = false;
+    this.game.reset();
+    this.grid = this.game.grid;
+  }
+
   private convertSpeedToMilliseconds(speed: number): number {
     return (100 - speed) * 10;
   }

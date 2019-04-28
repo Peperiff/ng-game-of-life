@@ -37,6 +37,18 @@ describe('Game', () => {
     expect(game.isRunning).toBeFalsy();
   }));
 
+  it('should reset the Game and grid', () => {
+    const previousGeneration = game.grid;
+    game.reset();
+    expect(game.grid).not.toEqual(previousGeneration);
+  });
+
+  it('should reset the Game call stop function', () => {
+    spyOn(game, 'stop');
+    game.reset();
+    expect(game.stop).toHaveBeenCalled();
+  });
+
   afterEach(() => {
     expect(game.stop());
   });

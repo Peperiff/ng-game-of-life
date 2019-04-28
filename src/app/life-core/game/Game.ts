@@ -65,15 +65,6 @@ export class Game {
     }
   }
 
-  private playOneItaration(remainingIterations, intervals) {
-    if (!(remainingIterations > 1)) {
-      this.stop();
-    }
-    remainingIterations = remainingIterations - 1;
-    console.log('Game\n' + this._grid.toString());
-    this._grid.next();
-  }
-
   /**
    * Stop current game
    */
@@ -82,6 +73,15 @@ export class Game {
     if (undefined !== this.timer && null !== this.timer) {
       clearInterval(this.timer);
     }
+  }
+
+  /**
+   * Reset the game.
+   * If a game is running the game is stopped. The grid is also reinitialised.
+   */
+  public reset(): void {
+    this.stop();
+    this._grid = new Grid();
   }
 
   public get grid(): Grid {

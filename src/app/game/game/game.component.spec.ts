@@ -23,4 +23,22 @@ describe('GameComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should play', () => {
+    spyOn(component.game, 'play');
+    component.play();
+    expect(component.game.play).toHaveBeenCalled();
+  });
+
+  it('should stop', () => {
+    spyOn(component.game, 'stop');
+    component.stop();
+    expect(component.game.stop).toHaveBeenCalled();
+  });
+
+  it('should reset', () => {
+    spyOn(component.game, 'reset');
+    component.reset();
+    expect(component.game.reset).toHaveBeenCalled();
+  });
 });
